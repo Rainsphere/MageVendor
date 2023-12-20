@@ -1,0 +1,808 @@
+ <Ui xmlns="http://www.blizzard.com/wow/ui/"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Slider name="MageVendorSliderTemplate" orientation="HORIZONTAL" minValue="0" maxValue="4" valueStep="1" defaultValue="1" enableMouse="true" virtual="true">
+		<Size>
+			<AbsDimension x="96" y="17"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="-5" bottom="-5"/>
+		</HitRectInsets>
+		<Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="8"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="8"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="3" right="3" top="6" bottom="6"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentMin" inherits="GameFontHighlightSmall" text="0">
+					<Anchors>
+						<Anchor point="RIGHT" relativePoint="LEFT">
+							<Offset>
+								<AbsDimension x="-2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r=".65" g=".65" b=".65"/>
+				</FontString>
+				<FontString name="$parentMax" inherits="GameFontHighlightSmall" text="4">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r=".65" g=".65" b=".65"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			<Size>
+				<AbsDimension x="32" y="32"/>
+			</Size>
+		</ThumbTexture>
+	</Slider>
+
+    <Button name="MageVendorMiniButton" inherits="UIPanelButtonTemplate" virtual="true">
+		<NormalFont style="GameFontNormalSmall"/>
+		<HighlightFont style="GameFontHighlightSmall"/>
+		<DisabledFont style="GameFontDisableSmall"/>
+		<Size><AbsDimension x="20" y="18"/></Size>
+	</Button>
+
+    <Frame name="MageVendorUserItem_Individual" virtual="true">
+        <Size>
+            <AbsDimension x="265" y="50"/>
+        </Size>
+        <Frames>
+            <Frame>
+                <Size>
+                    <AbsDimension x="60" y="50"/>
+                </Size>
+                <Anchors>
+                    <Anchor point = "LEFT">
+                        <Offset>
+                            <AbsDimension x = "5" y = "0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Button name="$parentCompleteButton" inherits="UIPanelButtonTemplate" Text="Complete">
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <NormalFont style="GameFontNormalSmall"/>
+                        <HighlightFont style="GameFontHighlightSmall"/>
+                        <DisabledFont style="GameFontDisableSmall"/>
+                        <Size><AbsDimension x="60" y="18"/></Size>
+                    </Button>
+                </Frames>
+            </Frame>
+            <Frame>
+                <Size>
+                    <AbsDimension x="80" y="50"/>
+                </Size>
+                <Anchors>
+					<Anchor point = "LEFT">
+                        <Offset>
+                            <AbsDimension x = "70" y = "0"/>
+                        </Offset>
+                    </Anchor>
+				</Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString name = "$parentUserName" inherits = "GameFontHighlightSmall" text = "Username" justifyH = "Left">
+                            <Size>
+                                <AbsDimension x = "80" y = "16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point = "LEFT"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame>
+                <Size>
+                    <AbsDimension x="80" y="50"/>
+                </Size>
+                <Anchors>
+					<Anchor point = "LEFT">
+                        <Offset>
+                            <AbsDimension x = "155" y = "0"/>
+                        </Offset>
+                    </Anchor>
+				</Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString name = "$parentFoodRequest" inherits = "GameFontHighlightSmall" text = "Food: 0 Stacks" justifyH = "RIGHT">
+                            <Size>
+                                <AbsDimension x = "80" y = "16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point = "TOPRIGHT">
+                                    <Offset>
+                                        <AbsDimension x = "-5" y = "-13"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                        <FontString name = "$parentWaterRequest" inherits = "GameFontHighlightSmall" text = "Water: 0 Stacks" justifyH = "RIGHT">
+                            <Size>
+                                <AbsDimension x = "80" y = "16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point = "TOPRIGHT">
+                                    <Offset>
+                                        <AbsDimension x = "-5" y = "-23"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame>
+                <Size>
+                    <AbsDimension x="20" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point = "LEFT">
+                        <Offset>
+                            <AbsDimension x = "240" y = "0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Button name="$parentCancelButton" inherits="UIPanelButtonTemplate" Text="|TInterface\Buttons\UI-StopButton:0|t">
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <NormalFont style="GameFontNormalSmall"/>
+                        <HighlightFont style="GameFontHighlightSmall"/>
+                        <DisabledFont style="GameFontDisableSmall"/>
+                        <Size><AbsDimension x="20" y="18"/></Size>
+                    </Button>
+                </Frames>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnLoad inherit="prepend">
+                Mixin(self, BackdropTemplateMixin)
+                self:SetBackdrop( {
+                bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <!-- insets = { left = 0, right = 5, top = 5, bottom = 5 } -->
+                })
+                self:SetBackdropColor(0.5, 0.5, 0.5, 1)
+            </OnLoad>
+        </Scripts>
+    </Frame>
+
+    <Frame name="MageVendorUserItem" virtual="true">
+        <Size>
+            <AbsDimension x="265" y="50"/>
+        </Size>
+        <Frames>
+            <CheckButton name="$parentCheckButton" inherits="OptionsCheckButtonTemplate" text="Accept">
+                <Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+            </CheckButton>
+            <Frame>
+                <Size>
+                    <AbsDimension x="50" y="50"/>
+                </Size>
+                <Anchors>
+					<Anchor point = "LEFT">
+                        <Offset>
+                            <AbsDimension x = "30" y = "0"/>
+                        </Offset>
+                    </Anchor>
+				</Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString name = "$parentUserName" inherits = "GameFontHighlightSmall" text = "Username" justifyH = "Left">
+                            <Size>
+                                <AbsDimension x = "80" y = "16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point = "LEFT"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame>
+                <Size>
+                    <AbsDimension x="75" y="50"/>
+                </Size>
+                <Anchors>
+					<Anchor point = "LEFT">
+                        <Offset>
+                            <AbsDimension x = "125" y = "0"/>
+                        </Offset>
+                    </Anchor>
+				</Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString name = "$parentFoodRequest" inherits = "GameFontHighlightSmall" text = "Food: 0 Stacks" justifyH = "RIGHT">
+                            <Size>
+                                <AbsDimension x = "100" y = "16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point = "TOPRIGHT">
+                                    <Offset>
+                                        <AbsDimension x = "-5" y = "-13"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                        <FontString name = "$parentWaterRequest" inherits = "GameFontHighlightSmall" text = "Water: 0 Stacks" justifyH = "RIGHT">
+                            <Size>
+                                <AbsDimension x = "100" y = "16"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point = "TOPRIGHT">
+                                    <Offset>
+                                        <AbsDimension x = "-5" y = "-23"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <Frame>
+                <Size>
+                    <AbsDimension x="50" y="50"/>
+                </Size>
+                <Anchors>
+                    <Anchor point = "RIGHT">
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Button name="$parentCancelButton" inherits="UIPanelButtonTemplate" Text="|TInterface\Buttons\UI-StopButton:0|t">
+                        <Anchors>
+                            <Anchor point="LEFT">
+                                <Offset>
+                                    <AbsDimension x="240" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <NormalFont style="GameFontNormalSmall"/>
+                        <HighlightFont style="GameFontHighlightSmall"/>
+                        <DisabledFont style="GameFontDisableSmall"/>
+                        <Size><AbsDimension x="20" y="18"/></Size>
+                    </Button>
+                </Frames>
+            </Frame>
+            
+        </Frames>
+        <Scripts>
+            <OnLoad inherit="prepend">
+                Mixin(self, BackdropTemplateMixin)
+                self:SetBackdrop( {
+                bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <!-- insets = { left = 0, right = 5, top = 5, bottom = 5 } -->
+                })
+                self:SetBackdropColor(0.5, 0.5, 0.5, 1)
+            </OnLoad>
+        </Scripts>
+    </Frame>
+     
+    <Frame name="MageVendorMainFrame" hidden="true"  enableMouse="false" movable="true" parent="UIParent" clampedToScreen="true" topLevel="true">
+        <Size>
+			<AbsDimension x="300" y="200"/>
+		</Size>
+        <Anchors>
+            <Anchor point = "CENTER">
+                <Offset x = "0" y = "0"/>
+            </Anchor>
+        </Anchors>
+        <Frames>
+            <Frame name="MageVendorTitle" enableMouse="true" frameStrata="LOW" inherits="SecureHandlerStateTemplate">
+                <Anchors>
+                    <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                </Anchors>
+                <Size>
+                    <AbsDimension x = "300" y = "25"/>
+                </Size>
+                <Backdrop tile = "true">
+
+                </Backdrop>
+                <Layers>
+                    <Layer>
+                        <FontString name = "$parentTitle" inherits = "GameFontHighlightSmall" text = "Mage Vendor" justifyH = "LEFT">
+                            <Size>
+                                <AbsDimension x = "140" y = "20"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point = "TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x = "6" y = "0"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+
+                <Scripts>
+                    <OnLoad inherit="prepend">
+                        Mixin(self, BackdropTemplateMixin)
+                        self:SetBackdrop( {
+                        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <!-- insets = { left = 0, right = 5, top = 5, bottom = 5 } -->
+                        })
+                        self:SetBackdropColor(0, 0, 0, 1)
+						self:RegisterForDrag("LeftButton");
+                    </OnLoad>
+
+                    <OnDragStart>
+						MageVendor:DragStart(self, button);
+                    </OnDragStart>
+                    <OnDragStop>
+						MageVendor:DragStop(self, button);
+                    </OnDragStop>
+
+                </Scripts>
+            </Frame>
+            <Button name="MageVendorToggleButton" inherits="UIPanelButtonTemplate" text="Mage Mode" hidden="true">
+                <Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-26" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+                <NormalFont style="GameFontNormalSmall"/>
+                <HighlightFont style="GameFontHighlightSmall"/>
+                <DisabledFont style="GameFontDisableSmall"/>
+                <Size><AbsDimension x="80" y="18"/></Size>
+                <Scripts>
+                    <OnClick>
+                        MageVendor:ToggleMode()
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parentCloseButton" inherits="MageVendorMiniButton" Text="|TInterface\Buttons\UI-StopButton:0|t">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-6" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						 MageVendor:BtnClose()
+					</OnClick>
+				</Scripts>
+			</Button>
+           
+            <Frame name="MageVendorMainContainerFrame" enableMouse="true" frameStrata="LOW" inherits="SecureHandlerStateTemplate">
+                <Size>
+                    <AbsDimension x = "300" y = "175"/>
+                </Size>
+                <Anchors>
+                    <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT">
+                        <Offset>
+                            <AbsDimension x = "0" y = "-25"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Frame name="MageVendorMageContainerFrame"  enableMouse="true" frameStrata="LOW" inherits="SecureHandlerStateTemplate" hidden="true">
+                        <Size>
+                            <AbsDimension x="300" y="275"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                            <Anchor point ="BOTTOMRIGHT" relativeTo = "$parent" relativePoint = "BOTTOMRIGHT"/>
+                        </Anchors>
+                        <Frames>
+                            <Frame name="$parent_tab1" hidden="false">
+                                <Anchors>
+                                    <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                                    <Anchor point ="BOTTOMRIGHT" relativeTo = "$parent" relativePoint = "BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Size>
+                                    <AbsDimension x="300" y="275"/>
+                                </Size>
+                                <Frames>
+                                    <ScrollFrame inherits="UIPanelScrollFrameTemplate">
+                                        <ScrollChild>
+                                            <Frame name="AllRequestsScrollChild" enableMouse="true" frameStrata="LOW" inherits="SecureHandlerStateTemplate">
+                                                <Size>
+                                                    <AbsDimension x="300" y="260"/>
+                                                </Size>
+                                                <Anchors>
+                                                    <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                                                    <Anchor point ="BOTTOMRIGHT" relativeTo = "$parent" relativePoint = "BOTTOMRIGHT"/>
+                                                </Anchors>
+                                            </Frame>
+                                        </ScrollChild>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                            <Anchor point="BOTTOMRIGHT" relativeTo="$parent">
+                                                <Offset>
+                                                    <AbsDimension x="-25" y="14"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                    </ScrollFrame>
+                                </Frames>
+                            </Frame>
+                            <Frame name="$parent_tab2" hidden="true">
+                                <Anchors>
+                                    <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                                    <Anchor point ="BOTTOMRIGHT" relativeTo = "$parent" relativePoint = "BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Size>
+                                    <AbsDimension x="300" y="275"/>
+                                </Size>
+                                <Frames>
+                                    <ScrollFrame inherits="UIPanelScrollFrameTemplate">
+                                        <ScrollChild>
+                                            <Frame name="PersonalRequestsScrollChild" enableMouse="true" frameStrata="LOW" inherits="SecureHandlerStateTemplate">
+                                                <Size>
+                                                    <AbsDimension x="300" y="260"/>
+                                                </Size>
+                                                <Anchors>
+                                                    <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                                                    <Anchor point ="BOTTOMRIGHT" relativeTo = "$parent" relativePoint = "BOTTOMRIGHT"/>
+                                                </Anchors>
+                                            </Frame>
+                                        </ScrollChild>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                            <Anchor point="BOTTOMRIGHT" relativeTo="$parent">
+                                                <Offset>
+                                                    <AbsDimension x="-25" y="14"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                    </ScrollFrame>
+                                </Frames>
+                            </Frame>
+                            
+                            <Button name="$parentTab1" inherits="CharacterFrameTabButtonTemplate" id="1" text="All Requests">
+                                <Anchors>
+                                    <Anchor point="CENTER" relativePoint="BOTTOMLEFT">
+                                        <Offset>
+                                            <AbsDimension x="60" y="-14"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        PanelTemplates_SetTab(MageVendorMageContainerFrame, 1);
+                                        MageVendorMageContainerFrame_tab1:Show();
+                                        MageVendorMageContainerFrame_tab2:Hide();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                            <Button name="$parentTab2" inherits="CharacterFrameTabButtonTemplate" id="2" text="My Requests">
+                                <Anchors>
+                                    <Anchor point="LEFT" relativeTo="$parentTab1" relativePoint="RIGHT">
+                                        <Offset>
+                                            <AbsDimension x="-16" y="0"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        PanelTemplates_SetTab(MageVendorMageContainerFrame, 2);
+                                        MageVendorMageContainerFrame_tab1:Hide();
+                                        MageVendorMageContainerFrame_tab2:Show();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                        </Frames>
+                    </Frame>
+                    <Frame name="MageVendorUserContainerFrame" enableMouse="true" frameStrata="LOW" inherits="SecureHandlerStateTemplate">
+                        <Size>
+                            <AbsDimension x="300" y="175"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                            <Anchor point ="BOTTOMRIGHT" relativeTo = "$parent" relativePoint = "BOTTOMRIGHT"/>
+                        </Anchors>
+                        <Frames>
+                            <Frame name="MageVendorFoodRequestFrame" enableMouse="true" >
+                                <Size>
+                                    <AbsDimension x="300" y="75"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point = "TOPLEFT" relativeTo = "$parent" relativePoint = "TOPLEFT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer level="BACKGROUND">
+                                        <Texture file="Interface\ChatFrame\ChatFrameBackground">
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT">
+                                                    <Offset>
+                                                        <AbsDimension x="4" y="-4"/>
+                                                    </Offset>
+                                                </Anchor>
+                                                <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+                                                    <Offset>
+                                                        <AbsDimension x="-4" y="4"/>
+                                                    </Offset>
+                                                </Anchor>
+                                            </Anchors>
+                                            <Gradient orientation="VERTICAL">
+                                                <MinColor r="0.3" g="0.3" b="0.3" a=".5"/>
+                                                <MaxColor r="0.3" g="0.3" b="0.3" a=".5"/>
+                                            </Gradient>
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                    <Frame name="FoodRequestTitleFrame">
+                                        <Size>
+                                            <AbsDimension x="300" y="25"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point = "TOPLEFT" relativeTo = "MageVendorFoodRequestFrame" relativePoint = "TOPLEFT"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name = "FoodRequestTitle" inherits = "GameFontHighlightSmall" text = "Food Request:" justifyH = "LEFT">
+                                                    <Size>
+                                                        <AbsDimension x = "140" y = "20"/>
+                                                    </Size>
+                                                    <Anchors>
+                                                        <Anchor point = "TOPLEFT">
+                                                            <Offset>
+                                                                <AbsDimension x = "16" y = "-6"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <Frame name="FoodRequestText">
+                                        <Size>
+                                            <AbsDimension x="300" y="25"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point = "TOPCENTER" relativeTo = "$parent" relativePoint = "TOPCENTER">
+                                                <Offset>
+                                                    <AbsDimension x = "0" y = "-25"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name = "FoodRequestText_Text" inherits = "GameFontHighlightSmall" text = "0 Stacks" justifyH = "CENTER">
+                                                    <Size>
+                                                        <AbsDimension x = "300" y = "20"/>
+                                                    </Size>
+                                                    <Anchors>
+                                                        <Anchor point = "TOPCENTER">
+                                                           
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <Slider name="FoodRequestSlider" minValue="0" maxValue="4" defaultValue="0" valueStep="1.0" obeyStepOnDrag="true" inherits="OptionsSliderTemplate">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="FoodRequestTitle" relativePoint="BOTTOMLEFT" x="45" y="-15"/>
+                                            <Anchor point="RIGHT" relativeTo="MageVendorFoodRequestFrame" relativePoint="RIGHT" x="-40"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                _G[self:GetName().."Low"]:SetText("0");
+                                                _G[self:GetName().."High"]:SetText("4");
+                                                self:OnBackdropLoaded();
+                                            </OnLoad>
+                                            <OnValueChanged>
+                                                if(value == 1) then
+                                                    FoodRequestText_Text:SetText("1 Stack");
+                                                else
+                                                    FoodRequestText_Text:SetText(value.." Stacks");
+                                                end
+                                            </OnValueChanged>
+                                        </Scripts>
+                                    </Slider>
+                                    
+                                </Frames>
+                               
+                            </Frame>
+                            <Frame name="MageVendorWaterRequestFrame" enableMouse="true" >
+                                <Size>
+                                    <AbsDimension x="300" y="75"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point = "TOPLEFT" relativeTo = "MageVendorFoodRequestFrame" relativePoint = "BOTTOMLEFT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer level="BACKGROUND">
+                                        <Texture file="Interface\ChatFrame\ChatFrameBackground">
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT">
+                                                    <Offset>
+                                                        <AbsDimension x="4" y="-4"/>
+                                                    </Offset>
+                                                </Anchor>
+                                                <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+                                                    <Offset>
+                                                        <AbsDimension x="-4" y="4"/>
+                                                    </Offset>
+                                                </Anchor>
+                                            </Anchors>
+                                            <Gradient orientation="VERTICAL">
+                                                <MinColor r="0.3" g="0.3" b="0.3" a=".5"/>
+                                                <MaxColor r="0.3" g="0.3" b="0.3" a=".5"/>
+                                            </Gradient>
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                    <Frame name="WaterRequestTitleFrame">
+                                        <Size>
+                                            <AbsDimension x="300" y="25"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point = "TOPLEFT" relativeTo = "MageVendorWaterRequestFrame" relativePoint = "TOPLEFT"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name = "WaterRequestTitle" inherits = "GameFontHighlightSmall" text = "Water Request:" justifyH = "LEFT">
+                                                    <Size>
+                                                        <AbsDimension x = "140" y = "20"/>
+                                                    </Size>
+                                                    <Anchors>
+                                                        <Anchor point = "TOPLEFT">
+                                                            <Offset>
+                                                                <AbsDimension x = "16" y = "-6"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <Frame name="WaterRequestText">
+                                        <Size>
+                                            <AbsDimension x="300" y="25"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point = "TOPCENTER" relativeTo = "$parent" relativePoint = "TOPCENTER">
+                                                <Offset>
+                                                    <AbsDimension x = "0" y = "-25"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name ="WaterRequestText_Text" inherits = "GameFontHighlightSmall" text = "0 Stacks" justifyH = "CENTER">
+                                                    <Size>
+                                                        <AbsDimension x = "300" y = "20"/>
+                                                    </Size>
+                                                    <Anchors>
+                                                        <Anchor point = "TOPCENTER">
+                                                        
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <Slider name="WaterRequestSlider" minValue="0" maxValue="4" defaultValue="0" valueStep="1.0" obeyStepOnDrag="true" inherits="OptionsSliderTemplate">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="WaterRequestTitle" relativePoint="BOTTOMLEFT" x="45" y="-15"/>
+                                            <Anchor point="RIGHT" relativeTo="MageVendorWaterRequestFrame" relativePoint="RIGHT" x="-40"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                _G[self:GetName().."Low"]:SetText("0");
+                                                _G[self:GetName().."High"]:SetText("4");
+                                                self:OnBackdropLoaded();
+                                            </OnLoad>
+                                            <OnValueChanged>
+                                                if(value == 1) then
+                                                    WaterRequestText_Text:SetText("1 Stack");
+                                                else
+                                                    WaterRequestText_Text:SetText(value.." Stacks");
+                                                end
+                                            </OnValueChanged>
+                                        </Scripts>
+                                    </Slider>
+                                    
+                                </Frames>
+                            </Frame>
+                            <Frame name="MageVendorButtonHolder" enableMouse="true"  >
+                                <Size>
+                                    <AbsDimension x="300" y="25"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point = "BOTTOMLEFT" relativeTo = "$parent" relativePoint = "BOTTOMLEFT"/>  
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString name = "MageVendorStatus" inherits = "GameFontHighlightSmall" text = "No Mage Available" justifyH = "LEFT">
+                                            <Size>
+                                                <AbsDimension x = "220" y = "20"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point = "TOPLEFT">
+                                                    <Offset>
+                                                        <AbsDimension x = "5" y = "0"/>
+                                                    </Offset>
+                                                </Anchor>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                    <Button name="MageVendorBuyButton" inherits="UIPanelButtonTemplate" text="Request">
+                                        <Anchors>
+                                            <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="-6" y="4"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Size><AbsDimension x="80" y="18"/></Size>
+                                        <Scripts>
+                                            <OnClick>
+                                                MageVendor:RequestFoodAndWater(FoodRequestSlider:GetValue(), WaterRequestSlider:GetValue());
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+                        </Frames>
+                    </Frame>
+                    
+                </Frames>
+                <Scripts>
+                    <OnLoad inherit="prepend">
+                        Mixin(self, BackdropTemplateMixin)
+                        self:SetBackdrop( {
+                        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <!-- insets = { left = 0, right = 5, top = 5, bottom = 5 } -->
+                        })
+                        self:SetBackdropColor(0.1, 0.1, 0.1, 1)
+                        self:RegisterForDrag("LeftButton");
+
+                        PanelTemplates_SetNumTabs(MageVendorMageContainerFrame, 2);
+                        PanelTemplates_SetTab(MageVendorMageContainerFrame, 1);
+                    </OnLoad>
+                    <OnShow>
+                        PanelTemplates_SetTab(MageVendorMageContainerFrame, 1);
+                        MageVendorMageContainerFrame_tab1:Show()
+                        MageVendorMageContainerFrame_tab2:Hide()
+                    </OnShow>
+                </Scripts>
+            </Frame>
+        </Frames> 
+    </Frame>
+</Ui>
