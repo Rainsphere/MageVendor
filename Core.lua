@@ -1,8 +1,8 @@
-MageVendor = LibStub("AceAddon-3.0"):NewAddon("MageVendor", "AceConsole-3.0", "AceComm-3.0", "AceEvent-3.0", "AceBucket-3.0")
+MageVendor = LibStub("AceAddon-3.0"):NewAddon("MageVendor", "AceConsole-3.0", "AceComm-3.0", "AceEvent-3.0", "AceBucket-3.0", "AceTimer-3.0")
 local AceGUI = LibStub("AceGUI-3.0")
 
 function MageVendor:OnInitialize()
-    self.version = "0.0.1"
+    self.version = "0.9.1"
     self.db = LibStub("AceDB-3.0"):New("MageVendorDB", MAGE_VENDOR_DEFAULT_VALUES, true)
     self.opt = self.db.profile
     self.options.args.profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
@@ -81,7 +81,7 @@ function MageVendor:OnInitialize()
             ["OnTooltipShow"] = function(tooltip)
             
                     tooltip:SetText("Mage Vendor")
-                    tooltip:AddLine("Request Food from your resident mage!", 0, 1, 0)
+                    tooltip:AddLine("Request food and water from your resident mage!", 0, 1, 0)
                     tooltip:AddDoubleLine("Left Click", "Toggle MageVendor", 0, 1, 0, 1, 1, 1)
                     tooltip:AddDoubleLine("Right Click", "Open Options", 0, 1, 0, 1, 1, 1)
                     tooltip:Show()
@@ -98,6 +98,13 @@ function MageVendor:OnInitialize()
     )
 
     self.MinimapIcon:Register("MageVendor", self.LibDataBroker, self.opt.minimap)
+
+    C_Timer.After(
+        2.0,
+        function()
+            self:MageVendorMinimapIconToggle()
+        end
+    )
 
     local channel = self:GetChannel()
     self:SendCommMessage("MV_AvailMages", self.name, channel)
@@ -245,8 +252,6 @@ function MageVendor:ToggleMode()
 
 end
 
-
-
 function MageVendor:OnRequestAvailableMages()
     if(self.class == "MAGE") then
         local channel = self:GetChannel()
@@ -258,8 +263,6 @@ function MageVendor:OnRequestAvailableMages()
         end
     end
 end
-
-
 
 function MageVendor:CancelButtonClick()
 end
