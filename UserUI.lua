@@ -17,7 +17,7 @@ function MageVendor:RequestFoodAndWater(food, water)
         return
     end
 
-    local cannel = MageVendor:GetChannel()
+    local channel = MageVendor:GetChannel()
     MageVendor:SendCommMessage("MV_ReqFoodWater", food .. "," .. water, channel)
 
     self.StatusText:SetText("Request sent.")
