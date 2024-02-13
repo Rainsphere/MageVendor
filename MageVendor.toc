@@ -9,7 +9,6 @@
 embeds.xml
 
 Core.lua
-Helpers.lua
 UserUI.lua
 MageUI.lua
 
