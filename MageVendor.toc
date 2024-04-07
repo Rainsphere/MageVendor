@@ -1,8 +1,8 @@
-## Interface: 11501
+## Interface: 11502
 ## Title: Mage Vendor
 ## Notes: Turn your mage into a food and water vending machine.
 ## Author: Yva-WildGrowth (SoD)
-## Version: 0.9.4
+## Version: 0.9.5
 
 ## SavedVariables: MageVendorDB
 
